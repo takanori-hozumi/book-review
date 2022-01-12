@@ -1,0 +1,25 @@
+<div class= "container mt-3 pb-5">
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <h1>Editing Book</h1>
+      <%= form_with model: @book, local: true do |f| %>
+        <div class="form-group">
+          <label for="inputTitle">Title</label>
+          <%= f.text_field :title, autofocus: true, id: "inputTitle", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <label for="inputopinion">Opinion</label>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+          <%= f.submit "Update Book", class:"btn btn-success"%>
+            <%if @book.user == current_user %>
+              <div class="text-primary">
+                <%= link_to "Show", book_path(@book)%>
+                  |
+                <%= link_to "Back", books_path %>
+            <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
